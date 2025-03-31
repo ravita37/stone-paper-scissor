@@ -1,0 +1,193 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: #f5f5f5;
+    margin: 0;
+    padding: 20px;
+}
+.yelloww{
+    border: 2px solid rgb(255, 51, 0);
+}
+.background{
+    background-color: #0056b3;
+    min-height: 100vh; 
+}
+.top-head{
+    font-size: 50px;
+    font-weight: bold;
+    text-align: center;
+    background-color: #0056b3;
+}
+.sgpa1{
+    font-size: 30px;
+    font-weight: bold;
+    color: #f5f5f5; 
+}
+.sgpa-box{
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    font-size: 20px;
+    color: #ddd;
+    font-weight: bold;
+}
+.bubbles {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* Individual Bubble */
+.bubble {
+    position: absolute;
+    bottom: -50px;
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    opacity: 0.6;
+    animation: rise 10s infinite ease-in-out;
+}
+
+/* Bubble Animation */
+@keyframes rise {
+    0% {
+        transform: translateY(0);
+        opacity: 0.6;
+    }
+    50% {
+        opacity: 0.8;
+    }
+    100% {
+        transform: translateY(-100vh);
+        opacity: 0;
+    }
+}
+.faltu{
+    height: 50px;
+}
+.container {
+   background-color: #0056b3;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    margin: auto;
+}
+.btnn{
+    border-top-left-radius:5px ;
+    border-top-right-radius:5px ;
+    border-bottom-left-radius:5px ;
+    border-bottom-right-radius:5px ;
+    background-color: palevioletred;
+    font-size: 20px;
+    
+    
+}
+.btnn:focus{
+    outline: none;
+    box-shadow: none;
+}
+#btn2{
+    background-color: palevioletred;
+    border-top-left-radius:5px ;
+    border-top-right-radius:5px ;
+    border-bottom-left-radius:5px ;
+    border-bottom-right-radius:5px ;
+    border: none;
+    height: 50px;
+    font-size: 20px;
+}
+#btn2:focus{
+    outline: none;
+    box-shadow: none;
+}
+#subjectTable td {
+    padding: 10px;
+    text-align: center;
+    font-size: 25px;
+    color: #f5f5f5;
+    font-weight: bold;
+}
+
+
+.form-group {
+    width: 100%;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#credit{
+    margin: 5px;
+    background-color: rgb(157, 245, 216);
+    
+}
+#grade{
+    margin: 5px;
+    background-color: rgb(157, 245, 216);
+}
+
+#totalSgpa{
+    margin: 5px;
+    background-color: rgb(157, 245, 216);
+}
+#totalSemesters{
+    margin: 5px;
+    background-color: rgb(157, 245, 216);
+}
+input {
+    padding: 10px;
+    margin: 5px;
+    width: 40%;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+.back{
+    background-color: #6d6262;
+    text-align: center;
+    font-size: 20px;
+}
+button {
+    padding: 10px 15px;
+    background: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    margin: 5px;
+}
+
+button:hover {
+    background: rgb(250, 166, 180);
+}
+
+#btn2:hover {
+    background: rgb(250, 166, 180);
+}
+
+table {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: center;
+}
+
+th {
+    background: #007bff;
+    color: white;
+}
+.title{
+    display: flex;
+    align-items: center;
+}

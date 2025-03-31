@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CGPA & SGPA Calculator</title>
+    <link rel="stylesheet" href="style2.css">
+    <link rel="stylesheet" href="css/bootstrap.css">
+</head>
+<body>
+ <section class="background">
+    <div class="bubbles"></div>
+    <div class="container  count ">
+       
+        <div class="row top-head justify-content-center text-center">
+            <div class=" title">CGPA & SGPA Calculator</div>
+        </div>
+        
+        <div class="row faltu ">
+        </div>
+        <div class="row sgpa1 ml-5">
+            SGPA Calculator
+        </div>
+          <div class="row ">
+            <div class="form-group">
+                <input type="number" id="credit" placeholder="Enter Subject Credits">
+                <input type="number" id="grade" placeholder="Enter Grade (0-10)">
+                <button class="btnn " onclick="addSubject()">Add Subject</button>
+            </div>
+          </div>
+        <table>
+            <thead>
+                <tr>
+                    <th class="back">Credits</th>
+                    <th class="back">Grade</th>
+                    <th class="back">Action</th>
+                </tr>
+            </thead>
+            <tbody id="subjectTable">
+                <!-- Subject data will be inserted dynamically -->
+            </tbody>
+        </table>
+        <div class="row sgpa-box  ">SGPA: <span id="sgpa">0.00</span></div>
+        <div class="row sgpa1 ml-5">
+            CGPA Calculator
+        </div>
+        <div class="row">
+            <div class="form-group">
+                 <input type="number" id="totalSgpa" placeholder="Total SGPA Sum">
+                 <input type="number" id="totalSemesters" placeholder="Total Semesters">
+                  <button class="btnn " onclick="calculateCGPA()">Calculate CGPA</button>
+            </div>
+            </div>
+            <div class="row sgpa-box  ">CGPA: <span id="cgpa">0.00</span></div>
+      
+       
+    </div>
+</section>
+    <script>
+        let subjects = [];
+
+        function addSubject() {
+            let credit = document.getElementById("credit").value.trim();
+            let grade = document.getElementById("grade").value.trim();
+
+            if (credit === "" || grade === "" || grade > 10 || grade < 0) {
+                alert("Enter valid credits and grade (0-10)!");
+                return;
+            }
+
+            subjects.push({ credit: parseFloat(credit), grade: parseFloat(grade) });
+            displaySubjects();
+            calculateSGPA();
+            clearFields();
+        }
+
+        function displaySubjects() {
+            let tableBody = document.getElementById("subjectTable");
+            tableBody.innerHTML = "";
+
+            subjects.forEach((subject, index) => {
+                let row = `<tr>
+                    <td>${subject.credit}</td>
+                    <td>${subject.grade}</td>
+                    <td><button id = "btn2"onclick="deleteSubject(${index})">Delete</button></td>
+                </tr>`;
+                tableBody.innerHTML += row;
+            });
+        }
+
+        function calculateSGPA() {
+            let totalCreditPoints = 0;
+            let totalCredits = 0;
+
+            subjects.forEach(subject => {
+                totalCreditPoints += subject.credit * subject.grade;
+                totalCredits += subject.credit;
+            });
+
+            let sgpa = totalCredits === 0 ? 0 : totalCreditPoints / totalCredits;
+            document.getElementById("sgpa").innerText = sgpa.toFixed(2);
+        }
+
+        function deleteSubject(index) {
+            subjects.splice(index, 1);
+            displaySubjects();
+            calculateSGPA();
+        }
+
+        function calculateCGPA() {
+            let totalSgpa = document.getElementById("totalSgpa").value.trim();
+            let totalSemesters = document.getElementById("totalSemesters").value.trim();
+
+            if (totalSgpa === "" || totalSemesters === "" || totalSemesters <= 0) {
+                alert("Enter valid SGPA sum and total semesters!");
+                return;
+            }
+
+            let cgpa = parseFloat(totalSgpa) / parseInt(totalSemesters);
+            document.getElementById("cgpa").innerText = cgpa.toFixed(2);
+        }
+
+        function clearFields() {
+            document.getElementById("credit").value = "";
+            document.getElementById("grade").value = "";
+        }
+
+
+
+
+
+        
+        document.addEventListener("DOMContentLoaded", function() {
+            const bubbleContainer = document.querySelector(".bubbles");
+
+            function createBubble() {
+                const bubble = document.createElement("div");
+                bubble.classList.add("bubble");
+
+                // Random size
+                let size = Math.random() * 40 + 10; // Between 10px and 50px
+                bubble.style.width = `${size}px`;
+                bubble.style.height = `${size}px`;
+
+                // Random position
+                bubble.style.left = `${Math.random() * 100}%`;
+
+                // Random animation duration
+                let duration = Math.random() * 5 + 5; // Between 5s and 10s
+                bubble.style.animationDuration = `${duration}s`;
+
+                // Append bubble to container
+                bubbleContainer.appendChild(bubble);
+
+                // Remove bubble after animation ends
+                setTimeout(() => {
+                    bubble.remove();
+                }, duration * 1000);
+            }
+
+            // Generate bubbles at random intervals
+            setInterval(createBubble, 400);
+        });
+    
+    </script>
+
+</body>
+</html>
